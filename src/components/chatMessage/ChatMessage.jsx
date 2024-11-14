@@ -1,6 +1,6 @@
 // ChatMessages.jsx
 import React from "react";
-import "./ChatMessages.css";
+import "./chatmessage.css";
 
 const ChatMessages = ({ messages, currentUser }) => {
   return (
