@@ -6,6 +6,8 @@ const useChatSocket = (roomId, username) => {
   const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
   const backendHost = "localhost:8000"; // Replace with your backend server's host (could also be an environment variable)
   const chatSocketUrl = `${protocol}${backendHost}/ws/chat/room/${roomId}/`;
+  const token = localStorage.getItem("accessToken");  // Adjust as needed to get your token
+
   
   useEffect(() => {
     const chatSocket = new WebSocket(chatSocketUrl);
