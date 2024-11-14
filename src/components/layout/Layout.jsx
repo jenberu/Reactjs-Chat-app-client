@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import Sidebar from "../sidebar/SideBar";
+import Header from "../header/NavBar";
+import { Outlet } from "react-router-dom";
+import "./layout.css";
 
-const Layout = () =>{
-    return(
-        <div className="page-layout">
-            <header>
-                <h1> chat app</h1>
+const Layout = () => {
+  const [menuOpen, setMenuopen] = useState(true);
+  const handleMenuToggle = () => {
+    setMenuopen(!menuOpen);
+  };
 
-            </header>
-            <main>
-                
+  return (
+    <div className="layout">
+      <Header onMenuToggle={handleMenuToggle} />
+      <div className="home">
+        <div className={`side-bar ${menuOpen ? "open" : "closed"}`}>
+          <Sidebar />
+        </div>
+        <main>
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};
 
-
-            </main>
-            <footer>
-                <p>
-                    copyright &copy; 2021. All rights reserved.
-                </p>
-            </footer>
-
-          
-        </div >
-    );
-}
-export default Layout
+export default Layout;

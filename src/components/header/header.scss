@@ -1,0 +1,81 @@
+.header {
+    background-color: #4CAF50; // Header background color
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+    .links {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      
+      .menu-icon {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        color: blueviolet;
+        
+        // Hide the menu icon on larger screens
+        // @media (min-width: 769px) {
+        //   display: none;
+        // }
+      }
+  
+      .header-text {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 10%;
+        
+        // Adjust font size on smaller screens
+        @media (max-width: 959px) {
+          font-size: 1.2em;
+          background-color: red;
+        }
+      }
+  
+      .login-logout {
+        position: absolute;
+        right: 10px;
+        border: 2px solid wheat;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+  
+        &:hover {
+          color: #f1f1f1;
+        }
+        div{
+        
+         margin-right: 20px;
+         em{
+          color: white;
+         }
+        
+        }
+      }
+    }
+  }
+  
+  // Mobile adjustments for header elements
+  @media (max-width: 768px) {
+    .header {
+      padding: 10px 15px;
+  
+      .header-text {
+        font-size: 1.2em;
+      }
+  
+      .login {
+        font-size: 0.9em;
+      }
+    }
+  }
+  
