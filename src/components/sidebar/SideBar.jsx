@@ -1,7 +1,7 @@
 // src/components/Sidebar/Sidebar.jsx
 import React from 'react';
 import SidebarItem from './SidebarItem';
-import './Sidebar.css';
+import './sidebar.css';
 
 const Sidebar = () => {
   return (
