@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 const useChatSocket = (roomId, username) => {
   const [messages, setMessages] = useState([]);
   const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
-  const chatSocketUrl = `${protocol}${window.location.host}/ws/chat/room/${roomId}/`;
+  const backendHost = "localhost:8000"; // Replace with your backend server's host (could also be an environment variable)
+  const chatSocketUrl = `${protocol}${backendHost}/ws/chat/room/${roomId}/`;
   
   useEffect(() => {
     const chatSocket = new WebSocket(chatSocketUrl);

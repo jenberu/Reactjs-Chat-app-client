@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import ChatRoom from './components/chatRoom/ChatRoom';
 import Layout from './components/layout/Layout';

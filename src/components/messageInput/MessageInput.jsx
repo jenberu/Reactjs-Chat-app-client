@@ -19,7 +19,7 @@ const MessageInput = ({ onSendMessage }) => {
         placeholder="Type your message here..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={(e) => e.key === "Enter" && handleSend()}
+        onKeyDown={(e) => e.key === "Enter" && handleSend()}
       />
       <button onClick={handleSend}>Send</button>
     </div>
