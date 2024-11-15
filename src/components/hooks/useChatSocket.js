@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getMessages } from "../api";
 
 const useChatSocket = (roomId, username) => {
   const [messages, setMessages] = useState([]);
@@ -13,6 +14,27 @@ const useChatSocket = (roomId, username) => {
   const chatSocketUrl = `${protocol}${backendHost}/ws/chat/room/${roomId}/?token=${token}&refresh_token=${refresh_token}`;
 
   useEffect(() => {
+    // Fetch intial Messages
+    const fetchMessage = async () => {
+      try {
+        const response = await getMessages(roomId);
+        if (response.status === 200) {
+          const fetchedMessages = response.data.map((msg) => ({
+            user: msg.user,
+            content: msg.content,
+            datetime: new Date(msg.sent_on).toLocaleTimeString("en", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            }),
+          }))
+          setMessages(fetchedMessages)
+        }
+      } catch (error) {
+        console.error("Failed to fetch messages:", error);
+      }
+    };
+    fetchMessage()
     // Create WebSocket connection once
     const socket = new WebSocket(chatSocketUrl);
     setChatSocket(socket); // Store WebSocket instance in state
@@ -38,7 +60,7 @@ const useChatSocket = (roomId, username) => {
     return () => {
       socket.close();
     };
-  }, [chatSocketUrl]);
+  }, [chatSocketUrl,roomId]);
 
   const sendMessage = (message) => {
     if (chatSocket && chatSocket.readyState === WebSocket.OPEN) {

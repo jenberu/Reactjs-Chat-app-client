@@ -66,4 +66,14 @@ export const LoginApi = async (email, password) => {
   localStorage.setItem('refreshToken', refresh);
   return response;
     
+}
+export const getMessages = async (room_id) => {
+  const response = await api.get(`/chat/messages/${room_id}/`)
+  return response
+    
+}
+export const getUser = async () => {
+  const response = await api.get('/accounts/user/profile/');
+  return response
+    
   }
