@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 // import { useAuth } from '../../context/authContext';
 import './login.scss'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { LoginApi } from '../../components/api';
+
 const Login = () => {
   const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,14 +15,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-          const response = await axios.post('http://localhost:8000/accounts/login/', {
-            email,
-            password
-          });
-    
-          // Save the tokens in local storage
-          localStorage.setItem('accessToken', response.data.access);
-          localStorage.setItem('refreshToken', response.data.refresh);
+          const response = await LoginApi(email, password);
           
           // You can add additional actions here, e.g., redirecting the user
             alert("Login successful!");

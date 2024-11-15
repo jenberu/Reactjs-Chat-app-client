@@ -10,7 +10,7 @@ const api = axios.create({
   // Request interceptor to attach the token
 api.interceptors.request.use(
     (config) => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("accessToken");
       if (token) {
         config.headers["Authorization"] = `Bearer ${token}`;
       }
@@ -37,10 +37,9 @@ api.interceptors.request.use(
           }
   
           // Refresh token request
-          const refreshResponse = await axios.post(
-            "http://localhost:8000/accounts/refresh/",
-            { refresh: refreshToken }
-          );
+          const refreshResponse = await axios.post( "http://localhost:8000/accounts/refresh/",
+                                     { refresh: refreshToken }
+                                              );
           const { access } = refreshResponse.data;
   
           // Save new token and retry original request
@@ -55,4 +54,16 @@ api.interceptors.request.use(
   
       return Promise.reject(error);
     }
-  );
+);
+export const LoginApi = async (email, password) => {
+  const response = await api.post('/accounts/login/', {
+    email,
+    password
+  });
+  const { refresh, access } = response.data;
+  // Save the tokens in local storage
+  localStorage.setItem('accessToken', access);
+  localStorage.setItem('refreshToken', refresh);
+  return response;
+    
+  }
