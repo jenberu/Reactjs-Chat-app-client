@@ -14,9 +14,10 @@ const ChatMessages = ({ messages, currentUser }) => {
           >
 
           <strong>{msg.user === currentUser ? "Me" : msg.user}</strong>
-          <span className="date"> {msg.datetime}</span>
           <br />
           {msg.content}
+          <span className="date"> {msg.datetime}</span>
+
         </div>
       ))}
     </div>

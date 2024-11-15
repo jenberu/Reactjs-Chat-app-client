@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import './header.scss';
+import { useAuth } from '../../contexts/userContext';
 
 function Header({ onMenuToggle }) {
   const [isMobile, setIsMobile] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,28 +38,29 @@ function Header({ onMenuToggle }) {
 
         <div className='login-logout'>
           <div>
-          <em>Well Come:Jemberu Kassie</em>
-
+            <em>Well Come:{ user?.username.toUpperCase()}</em>
+                     |
           </div>
+        
           <div>
-          <Link className="logout" to="/login">
-          <em>  Logout </em>
-          </Link>
-          </div>
-          <div>
-          <Link className="login" to="/login">
+          <Link className="link" to="/login">
           <em>Login </em>
-          </Link>
+            </Link>
+            |
           </div>
           <div>
-          <Link className="change-password" to="/login">
+          <Link className="link" to="/change-pass">
           <em>change password </em>
+            </Link>
+            |
+            <Link className="link" to="/register">
+          <em>Sign Up </em>
           </Link>
        </div>
         
         </div>
         
-        <h1 className='header-text'>{isMobile ? 'Ethiopian TSC ...' : ' Taxpayer Service Center'}</h1>
+        <h1 className='header-text'>{isMobile ? ('Coders Chat ...').toUpperCase() : (' GC Coder Chat Center').toUpperCase()}</h1>
 
       </div>
 

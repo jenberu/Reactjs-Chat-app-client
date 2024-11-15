@@ -31,6 +31,7 @@
         font-weight: bold;
         text-align: center;
         margin-left: 10%;
+     
         
         // Adjust font size on smaller screens
         @media (max-width: 959px) {
@@ -48,6 +49,9 @@
         text-decoration: none;
         font-weight: bold;
         display: flex;
+        .link{
+          text-decoration: none;
+        }
   
         &:hover {
           color: #f1f1f1;

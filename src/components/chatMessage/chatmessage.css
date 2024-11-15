@@ -1,30 +1,35 @@
 .chat-box {
-    padding: 1rem;
-    overflow-y: auto;
-    flex: 1;
-    background-color: #f9f9f9;
-  }
-  
-  .message {
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 10px;
-    max-width: 80%;
-    word-wrap: break-word;
-    font-size: 0.9rem;
-  }
-  
-  .message.sent {
-    background-color: #d1e7dd;
-    margin-right: auto;
-    color: #0d6efd;
-    width: 50%;
-  }
-  
-  .message.received {
-    background-color: lightgreen;
-    margin-left: auto;
-    color: #842029;
-    width: 50%;
-  }
-  
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  background-color: #f9f9f9;
+}
+
+.message {
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.message.sent {
+  background-color: #d1e7dd;
+  margin-right: auto;
+  color: #0d6efd;
+  width: 50%;
+}
+
+.message.received {
+  background-color: lightgreen;
+  margin-left: auto;
+  color: #842029;
+  width: 50%;
+}
+.message .date{
+position: absolute;
+right: 8px;
+bottom: 5px;
+}

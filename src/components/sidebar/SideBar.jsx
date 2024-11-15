@@ -7,10 +7,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <h2 className="sidebar-title" >Chat Room </h2>
-      <SidebarItem label="Home" icon="🏠" />
-      <SidebarItem label="Profile" icon="👤" />
-      <SidebarItem label="Settings" icon="⚙️" />
-      <SidebarItem label="Logout" icon="🚪" />
+      <SidebarItem label="Home" icon="🏠" to="/"/>
+      <SidebarItem label="Profile" icon="👤" to='/profile'/>
+      <SidebarItem label="Settings" icon="⚙️"to='/setting'/>
+      <SidebarItem label="Logout" icon="🚪" to='/logout'/>
     </div>
   );
 };
