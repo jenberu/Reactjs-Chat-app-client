@@ -1,18 +1,23 @@
-// useChatSocket.js
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useChatSocket = (roomId, username) => {
   const [messages, setMessages] = useState([]);
+  const [chatSocket, setChatSocket] = useState(null); // To store the WebSocket instance
   const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
-  const backendHost = "localhost:8000"; // Replace with your backend server's host (could also be an environment variable)
-  const chatSocketUrl = `${protocol}${backendHost}/ws/chat/room/${roomId}/?token=${localStorage.getItem("accessToken")}`;
-  const token = localStorage.getItem("accessToken");  // Adjust as needed to get your token
+  const backendHost = "localhost:8000";
+  const token = localStorage.getItem("accessToken");
+  const refresh_token = localStorage.getItem("refreshToken");
+  const navigate = useNavigate();
 
+  const chatSocketUrl = `${protocol}${backendHost}/ws/chat/room/${roomId}/?token=${token}&refresh_token=${refresh_token}`;
 
   useEffect(() => {
-    const chatSocket = new WebSocket(chatSocketUrl);
+    // Create WebSocket connection once
+    const socket = new WebSocket(chatSocketUrl);
+    setChatSocket(socket); // Store WebSocket instance in state
     
-    chatSocket.onmessage = (e) => {
+    socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
       const dateOptions = { hour: "numeric", minute: "numeric", hour12: true };
       const datetime = new Date(data.datetime).toLocaleTimeString("en", dateOptions);
@@ -22,17 +27,26 @@ const useChatSocket = (roomId, username) => {
       ]);
     };
 
-    chatSocket.onclose = () => console.error("Chat socket closed unexpectedly");
-    chatSocket.onerror = (error) => console.error("WebSocket error:", error);
+    socket.onclose = (event) => {
+      if (event.code === 1000) {
+        console.log("WebSocket closed normally.");
+      }
+    };
+    
+    socket.onerror = (error) => console.error("WebSocket error:", error);
 
-    return () => chatSocket.close();
+    return () => {
+      socket.close();
+    };
   }, [chatSocketUrl]);
 
   const sendMessage = (message) => {
-    const chatSocket = new WebSocket(chatSocketUrl);
-    chatSocket.onopen = () => {
+    if (chatSocket && chatSocket.readyState === WebSocket.OPEN) {
+      // Send the message over the existing WebSocket connection
       chatSocket.send(JSON.stringify({ message }));
-    };
+    } else {
+      console.error("WebSocket is not open.");
+    }
   };
 
   return { messages, sendMessage };
