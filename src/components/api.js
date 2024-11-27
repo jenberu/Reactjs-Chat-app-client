@@ -57,7 +57,8 @@ api.interceptors.response.use(
   }
 );
 export const LoginApi = async (email, password) => {
-  const response = await api.post("/accounts/login/", {
+  // directly use axios with Authorization header b/c it does not need jwtauthentations
+  const response = await axios.post("http://localhost:8000/accounts/login/", {
     email,
     password,
   });

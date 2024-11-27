@@ -16,9 +16,6 @@ const Login = () => {
 
         try {
           const response = await LoginApi(email, password);
-          
-          // You can add additional actions here, e.g., redirecting the user
-            alert("Login successful!");
             navigate('/')
           
         } catch (error) {
