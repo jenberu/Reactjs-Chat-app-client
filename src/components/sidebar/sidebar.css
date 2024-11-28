@@ -1,27 +1,21 @@
 /* src/components/Sidebar/Sidebar.css */
 
 .sidebar {
-    width: 250px;
-    background-color: #333;
+    width: 40%;
+    background-color: rgba(235, 137, 174,0.5);
     color: #fff;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100vh;
   }
   
-  .sidebar-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #f0f2f5;
-  }
+ .sidebar .icon{
+align-items: center;
+text-align: center;
+ }
   
   .sidebar-item {
     display: flex;
-    align-items: center;
     padding: 0.75rem;
-    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -29,7 +23,6 @@
     color: #f0f2f5;
     text-decoration: none;
     font-weight: bold;
-    margin-right: 1rem;
   }
   
   .sidebar-item:hover {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../sidebar/SideBar";
 import Header from "../header/Header";
 import { Outlet } from "react-router-dom";
+import Workspaces from "../workspace/WorkSpaceList";
 import "./layout.css";
 
 const Layout = () => {
@@ -15,7 +16,9 @@ const Layout = () => {
       <Header onMenuToggle={handleMenuToggle} />
       <div className="home">
         <div className={`side-bar ${menuOpen ? "open" : "closed"}`}>
-          <Sidebar />
+        <Sidebar />
+      
+          <Workspaces/>
         </div>
         <main>
           <Outlet />
