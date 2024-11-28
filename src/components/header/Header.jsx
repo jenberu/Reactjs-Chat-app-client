@@ -4,6 +4,10 @@ import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import './header.scss';
 import { useAuth } from '../../contexts/userContext';
+import { Logout } from '../api';
+import { BiGroup } from 'react-icons/bi';
+import { FaUsers } from 'react-icons/fa';
+import { AiOutlineTeam } from 'react-icons/ai';
 
 function Header({ onMenuToggle }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -25,7 +29,13 @@ function Header({ onMenuToggle }) {
  
      // Clean up event listener
      return () => window.removeEventListener('resize', handleResize);
-   }, []);
+  }, []);
+  
+  const handleLogout = async (e) => {
+    await Logout()
+    window.location.href = '/login';
+
+  }
   return (
     <header className="header">
       <div className="links">
@@ -35,32 +45,48 @@ function Header({ onMenuToggle }) {
           </IconButton>
 
         </div>
+        <h1 className='header-text'>
+            <FaUsers size={50} />
+            {isMobile ? ('CollabSphere ...').toUpperCase() : (' CollabSphere').toUpperCase()}</h1>
 
         <div className='login-logout'>
-          <div>
-            <em>Well Come:{ user?.username.toUpperCase()}</em>
-                     |
-          </div>
+          {user ? (
+            <>
+            <div>
+              <em>Well Come:{ user?.username.toUpperCase()}</em>
+                      |
+            </div>
+          
+
+            <div>
+                <Link className="link"  onClick={handleLogout}>
+                <em>Logout </em>
+                  </Link>
+                |
+                <Link className="link" to="/change-pass">
+                <em>change password </em>
+                  </Link>
+                  
+              </div>
+
+              </>
+          ):(<>
+            <div>
+                <Link className="link" to="/login">
+                <em>Login </em>
+                  </Link>
+                  |
+            </div>
+            <div>
+               
+                  <Link className="link" to="/register">
+                <em>Sign Up </em>
+                </Link>
+             </div>
+             </>)
+        }
+      </div>
         
-          <div>
-          <Link className="link" to="/login">
-          <em>Login </em>
-            </Link>
-            |
-          </div>
-          <div>
-          <Link className="link" to="/change-pass">
-          <em>change password </em>
-            </Link>
-            |
-            <Link className="link" to="/register">
-          <em>Sign Up </em>
-          </Link>
-       </div>
-        
-        </div>
-        
-        <h1 className='header-text'>{isMobile ? ('Coders Chat ...').toUpperCase() : (' GC Coder Chat Center').toUpperCase()}</h1>
 
       </div>
 

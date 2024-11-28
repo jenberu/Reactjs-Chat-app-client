@@ -102,3 +102,15 @@ export const userRegistor = async (data) => {
     }
   }
 };
+
+export const Logout = async () => {
+  try {
+    await api.post('/accounts/logout/', { refresh_token: localStorage.getItem('refreshToken') })
+    localStorage.clear();
+    
+  } catch (e) { 
+    console.error('Error logging out:', e)
+
+
+  }
+}
