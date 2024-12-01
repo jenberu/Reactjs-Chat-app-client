@@ -16,9 +16,7 @@ function App() {
       <Route element={<Layout />}>
           <Route path='/' element={<ChatRoom roomId="1" username={ user?.username} />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<UserProfileForm />} />
-          
-          
+          <Route path='/register' element={<UserProfileForm />} />     
       </Route>
      </Routes>
       </Router>

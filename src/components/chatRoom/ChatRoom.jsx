@@ -10,9 +10,15 @@ const ChatRoom = ({ roomId, username }) => {
   
   return (
     <div className="chat-container">
+     <div className="chat-nessage">
       <ChatMessages messages={messages} currentUser={username} />
-      <MessageInput onSendMessage={sendMessage} />
     </div>
+    <div className="chat-input">
+      <MessageInput onSendMessage={sendMessage} />
+        
+    </div>
+    </div>
+   
   );
 };
 

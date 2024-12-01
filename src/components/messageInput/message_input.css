@@ -3,15 +3,25 @@
     border-top: 1px solid #ddd;
     padding: 0.5rem;
     background-color: #ffffff;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
   }
   
   .chat-input input {
     flex: 1;
-    padding: 0.7rem;
+    padding: 2rem;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 0.5rem;
+
+  }
+  .chat-input input:focus {
+    outline: none;
+    background-color: #f1f3f5;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.3);
+
   }
   
   .chat-input button {

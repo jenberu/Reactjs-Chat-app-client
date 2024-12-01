@@ -7,15 +7,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Header Styling */
-header {
-    background-color: #35e209;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+
 
 /* Home container styling */
 .home {
@@ -27,7 +19,7 @@ header {
 /* Sidebar Styling */
 .side-bar {
     transition: width 0.3s ease-in-out;
-    background-color: #34495e;
+    background-color:rgb(112, 48, 112);
     color: #fff;
     width: 25%;
     display: flex;
@@ -36,18 +28,17 @@ header {
     color: white;
     overflow-x: hidden;
     gap: 10px;
+    border-top: 2px solid rgb(222, 235, 179);
+  
 }
 
 .side-bar.closed {
-    width: 70px;
+    width: 300px;
   }
 
 /* Main Content Styling */
 main {
     flex: 1;
-    background-color: #ecf0f1;
-    padding: 2rem;
-    overflow-y: auto;
 }
 
 /* Responsive Adjustments */

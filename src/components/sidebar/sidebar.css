@@ -1,11 +1,13 @@
 /* src/components/Sidebar/Sidebar.css */
 
 .sidebar {
-    width: 40%;
-    background-color: rgba(235, 137, 174,0.5);
+    border-right:2px solid rgb(222, 235, 179);;
+    width: 30%;
+    background-color: rgba(214, 111, 150, 0.5);
     color: #fff;
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 120px);
   }
   
  .sidebar .icon{
@@ -20,13 +22,16 @@ text-align: center;
     transition: background-color 0.3s;
   }
   .sidebar-item .nav-link{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     color: #f0f2f5;
     text-decoration: none;
     font-weight: bold;
   }
   
   .sidebar-item:hover {
-    background-color: #444;
+    background-color: #5611d6;
   }
   
   .sidebar-icon {

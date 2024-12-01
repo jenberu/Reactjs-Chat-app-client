@@ -5,9 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import './header.scss';
 import { useAuth } from '../../contexts/userContext';
 import { Logout } from '../api';
-import { BiGroup } from 'react-icons/bi';
 import { FaUsers } from 'react-icons/fa';
-import { AiOutlineTeam } from 'react-icons/ai';
 
 function Header({ onMenuToggle }) {
   const [isMobile, setIsMobile] = useState(false);

@@ -1,11 +1,21 @@
 .chat-container {
-    width: 90%;
-    max-width: 600px;
-    background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  height: calc(100vh - 100px); /* Full viewport height */
+  width: 98%; /* Full width */
+}
+
+.chat-nessage {
+  flex: 1; /* Allow this section to grow and fill available space */
+  overflow-y: auto; /* Add scroll for messages if content overflows */
+  padding: 1rem; /* Optional padding for messages */
+}
+
+.chat-input {
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-top: 1px solid #ddd; /* Separator line above input */
+  background-color: #fff;
   
+}
